@@ -12,7 +12,11 @@ const Header = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/">
           <img
-            src={theme === "dark" ? "/assets/logo.webp" : "/assets/logo2.webp"}
+            src={
+              theme === "dark"
+                ? "dist/assets/logo.webp"
+                : "dist/assets/logo2.webp"
+            }
             alt="Kumulus Logo"
             className="h-14"
           />
