@@ -14,8 +14,8 @@ const Header = () => {
           <img
             src={
               theme === "dark"
-                ? "dist/assets/logo.webp"
-                : "dist/assets/logo2.webp"
+                ? "src/assets/logo.webp"
+                : "src/assets/logo2.webp"
             }
             alt="Kumulus Logo"
             className="h-14"
