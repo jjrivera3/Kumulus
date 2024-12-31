@@ -19,8 +19,6 @@ const CityPage = () => {
   const weatherQuery = useWeatherQuery(coordinates);
   const forecastQuery = useForecastQuery(coordinates);
 
-  console.log(lon);
-
   if (weatherQuery.error || forecastQuery.error) {
     <Alert variant="destructive">
       <AlertTriangle className="h-4 w-4" />
