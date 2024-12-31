@@ -17,8 +17,8 @@ interface HourlyTemperatureProps {
 const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
   const chartData = data.list.slice(0, 8).map((item) => ({
     time: format(new Date(item.dt * 1000), "ha"),
-    temp: Math.round((item.main.temp * 9) / 5 + 32), // Convert Celsius to Fahrenheit
-    feels_like: Math.round((item.main.feels_like * 9) / 5 + 32), // Convert feels_like to Fahrenheit
+    temp: Math.round(item.main.temp), // Convert Celsius to Fahrenheit
+    feels_like: Math.round(item.main.feels_like), // Convert feels_like to Fahrenheit
   }));
 
   return (

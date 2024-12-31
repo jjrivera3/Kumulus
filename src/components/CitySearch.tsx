@@ -33,6 +33,7 @@ const CitySearch = () => {
       lon: parseFloat(lon),
       country,
     });
+    setQuery(""); // Clear the search bar
     setOpen(false);
     navigate(`/city/${name}?lat=${lat}&lon=${lon}`);
   };
