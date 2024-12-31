@@ -12,9 +12,7 @@ const Header = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/">
           <img
-            src={
-              theme === "dark" ? "src/assets/logo.png" : "src/assets/logo2.png"
-            }
+            src={theme === "dark" ? "/assets/logo.png" : "/assets/logo2.png"}
             alt="Kumulus Logo"
             className="h-14"
           />
