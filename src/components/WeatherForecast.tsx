@@ -23,7 +23,7 @@ interface DailyForecast {
 
 const WeatherForecast = ({ data }: WeatherForecastProps) => {
   const dailyForecasts = data.list.reduce((acc, forecast) => {
-    const date = format(new Date(forecast.dt * 1000), "yyy-MM-dd");
+    const date = format(new Date(forecast.dt * 1000), "yyyy-MM-dd");
 
     if (!acc[date]) {
       acc[date] = {
@@ -42,7 +42,7 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
     return acc;
   }, {} as Record<string, DailyForecast>);
 
-  const nextDays = Object.values(dailyForecasts).slice(0.6);
+  const nextDays = Object.values(dailyForecasts).slice(0, 6);
 
   const formatTemp = (temp: number) => `${Math.round(temp)}°F`;
 
@@ -56,9 +56,10 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
           {nextDays.map((day) => (
             <div
               key={day.date}
-              className="grid grid-cols-3 items-center gap-4 rounded-lg border p-4"
+              className="grid grid-cols-1 gap-2 rounded-lg border p-4 md:grid-cols-3"
             >
-              <div>
+              {/* Date and Description */}
+              <div className="flex flex-col items-start">
                 <p className="font-medium">
                   {format(new Date(day.date * 1000), "EEE, MMM d")}
                 </p>
@@ -66,7 +67,9 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
                   {day.weather.description}
                 </p>
               </div>
-              <div className="flex justify-center gap-4">
+
+              {/* Max and Min Temperature */}
+              <div className="flex justify-between md:justify-center gap-4">
                 <span className="flex items-center text-red-500">
                   <ArrowUp className="mr-1 h-4 w-4" />
                   {formatTemp(day.temp_max)}
@@ -76,13 +79,15 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
                   {formatTemp(day.temp_min)}
                 </span>
               </div>
-              <div className="flex justify-end gap-4">
+
+              {/* Humidity and Wind */}
+              <div className="flex justify-between md:justify-end gap-4">
                 <span className="flex items-center gap-1">
                   <Droplets className="h-4 w-4 text-blue-500" />
                   <span className="text-sm">{day.humidity}%</span>
                 </span>
                 <span className="flex items-center gap-1">
-                  <Wind className="w-4 h-4 text-blue-500" />
+                  <Wind className="h-4 w-4 text-blue-500" />
                   <span className="text-sm">{day.wind}m/s</span>
                 </span>
               </div>

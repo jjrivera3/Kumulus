@@ -15,7 +15,7 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
   } = data;
 
   const formatTemp = (temp: number) => `${Math.round(temp)} °`;
-  const speedInMph = Math.round(speed * 2.23694);
+  const speedInMph = Math.max(0, Math.round(speed * 2.23694) - 10);
 
   return (
     <Card className="overflow-hidden">
